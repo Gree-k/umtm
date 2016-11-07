@@ -34,16 +34,28 @@ AppAsset::register($this);
 
 <div class="wrap">
 <div class="header">
-    <div class="content js-open-slide" style="width: 200px; height: 50px ;top:10%; left: 20%; background-color: #0f74a8; cursor: pointer">
-
+    <div class="logo">
+        logo
+    </div>
+    <div class="button-container">
+        <span class="button  js-open-promote_material  ">Создать рекламу </span>
+        <span class="button js-open-reports">Отчеты</span>
+        <span class="button">На лабиринт</span>
+        <span class="button">Еще что-то</span>
+    </div>
+    <div class="user">
+        user
     </div>
 </div>
-    <div class="slide js-slide">
-        <div style="width: 100%; height: 100px; background-color: darkblue;position: absolute;  top: 0px">
-            <div class="content  " style="width: 200px; height: 50px ;bottom: 0; top: auto ; left: 20%; background-color: green; cursor: pointer">
+    <div id="promote_material" >
+        <div class="header ">
+            <div class="content " style="width: 200px; height: 50px ;bottom: 0; top: auto ; left: 20%; background-color: green; cursor: pointer">
 
             </div>
         </div>
+    </div>
+    <div id="reports">
+
     </div>
     <div class="container">
         <?= $content ?>
