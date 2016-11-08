@@ -38,7 +38,7 @@ AppAsset::register($this);
         logo
     </div>
     <div class="button-container">
-        <span class="button  js-open-promote_material  ">Создать рекламу </span>
+        <span class="button  js-open-promote_material button_on ">Создать рекламу </span>
         <span class="button js-open-reports">Отчеты</span>
         <span class="button">На лабиринт</span>
         <span class="button">Еще что-то</span>
@@ -49,15 +49,26 @@ AppAsset::register($this);
 </div>
     <div id="promote_material" >
         <div class="header ">
-            <div class="content " style="width: 200px; height: 50px ;bottom: 0; top: auto ; left: 20%; background-color: green; cursor: pointer">
 
-            </div>
+        </div>
+        <div class="main"  >
+            <div class="box wp30 ptb80"></div>
+            <div class="box wp30 ptb80"></div>
+            <div class="box wp30 ptb80"></div>
+            <div class="box wp30 ptb80"></div>
+            <div class="box wp30 ptb80"></div>
+            <div class="box wp30 ptb80"></div>
         </div>
     </div>
     <div id="reports">
-
+        <div class="box"><div class="content">213</div></div>
+        <div class="box"><div class="content">213</div></div>
+        <div class="box"><div class="content">213</div></div>
+        <div class="box"><div class="content">213</div></div>
+        <div class="box"><div class="content">213</div></div>
+        <div class="box"><div class="content">213</div></div>
     </div>
-    <div class="container">
+    <div class="container" style="overflow: hidden">
         <?= $content ?>
     </div>
 </div>
@@ -66,7 +77,6 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
