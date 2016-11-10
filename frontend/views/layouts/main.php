@@ -32,16 +32,18 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap" >
 <div class="header">
     <div class="logo">
         logo
     </div>
-    <div class="button-container">
-        <span class="button  js-open-promote_material button_on ">Создать рекламу </span>
-        <span class="button js-open-reports">Отчеты</span>
-        <span class="button">На лабиринт</span>
-        <span class="button">Еще что-то</span>
+    <div class="menu">
+        <ul>
+            <li class="js-open-promote_material active ">Создать рекламу</li><!--
+            --><li class="js-open-reports">Отчеты</li><!--
+            --><li>На лабиринт</li><!--
+            --><li>Еще что-то</li>
+        </ul>
     </div>
     <div class="user">
         user

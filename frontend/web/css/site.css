@@ -11,7 +11,7 @@ html, body {
     padding: 0 0 60px;
     background-color: rgba(220,220,220,1);
     overflow: hidden;
-
+    min-width: 1000px;
     font-family: PragmataPro;
 }
 
@@ -27,12 +27,27 @@ html, body {
     color: white;
 }
 
-.header > .button-container {
+.header > .menu {
     display: table-cell;
     width: calc(100% - 400px);
     height: 100%;
     text-align: center;
     vertical-align: middle;
+    white-space: nowrap;
+}
+.menu > ul li{
+    cursor: pointer;
+    display : inline-block;
+    border: 1px solid black;
+    padding: 5px 15px 8px;
+    font-size: 16px;
+    color: white;
+}
+.menu > ul .active{
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    color: black;
 }
 .header > .logo{
     width: 200px;
@@ -60,7 +75,7 @@ html, body {
 #promote_material:before {
     content: '';
     display: inline-block;
-    padding-top: 53%;
+    padding-top: 52%;
 }
 #promote_material > .header{
     width: 100%;
@@ -115,39 +130,135 @@ html, body {
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
-span.button{
-    padding: 5px 15px 8px;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    white-space: nowrap
-}
-span.button_on{
-    background-color: white;
-    border: 1px solid white;
-    border-radius: 4px;
-    color: black;
-}
+
 
 .box{
     width: 10%;
     float: left;
     overflow: hidden;
     position: relative;
-    background-color:  greenyellow;
+    background-color:  yellow;
 }
 .box:before {
     content: '';
     display: inline-block;
     padding-top: 100%;
 }
+.info-container > hr.separator {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 34%;
+    border: 1px solid grey;
+    margin: 0;
+}
+.info-container > div.separator{
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 34%;
+    border-right: 1px solid grey;
+}
+.info-block {
+    top: 8%;
+    border-radius: 4px;
+    width: 27%;
+    border: 1px solid black;
+}
+.info-block:nth-child(1) {
+    width: 26%;
+    bottom: 8%;
+    left: 4%;
+}
+.info-block:nth-child(2) {
+    bottom: 25%;
+    left: 38%;
+}
+.info-block:nth-child(3) {
+    bottom: 25%;
+    left: 69%;
+}
+
+.info-block > .content:nth-child(1) {
+    top: 10%;
+}
+.info-block > .content:nth-child(2) {
+    font-size: 26px;
+    top: 40%;
+}
+.info-block > .content:nth-child(3) {
+    top: 70%;
+}
+
+.info-selection {
+    cursor: pointer;
+    font-size: 18px;
+    width: 66%;
+    bottom: 0;
+    top: auto;
+    right: 0;
+    left: auto;
+    background-color: coral;
+}
+.info-selection > .active{
+    cursor: default;
+    background-color: greenyellow;
+    color: #0000cc;
+}
+.info-selection > div{
+    padding: 8px 0 10px;
+    width: calc((75%/2) - 1px);
+    float: left;
+    border-right: 1px solid black;
+}
+.info-selection > div:nth-child(1) {
+    width: 25%;
+}
+.info-selection > div:nth-child(2) {
+    width: 40%;
+}
+.info-selection > div:nth-child(3) {
+    width: calc(35% - 2px);
+    border-right: 0;
+}
+
+
+
+.percent-container{
+
+}
+.percent-container > hr.separator{
+    position:absolute;
+    top:40%;
+    border:1px solid blue;
+    width:150%;
+    height:100%;
+    -moz-transform:rotate(-35deg); /* Для Firefox */
+    -ms-transform: rotate(-35deg); /* Для IE */
+    -webkit-transform: rotate(-35deg); /* Для Safari, Chrome, iOS */
+    -o-transform: rotate(-35deg); /* Для Opera */
+    transform: rotate(-35deg);
+}
+
+
+.title{
+    white-space: nowrap;
+}
+
 .filter{
     white-space: nowrap;
     padding: 0;
+    margin: 0;
+    display: inline-block;
+
 }
 .filter > li {
     cursor: pointer;
-    display : inline-block;
+    display: inline-block;
     border: 1px solid black;
     padding: 5px 15px 8px;
 }
@@ -170,6 +281,12 @@ span.button_on{
     color: white;
 }
 
+.button {
+    border-radius: 30px;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 6px 20px 10px;
+}
 
 
 
@@ -181,10 +298,12 @@ span.button_on{
 
 
 
-
-
-
-
+.fl{
+    float: left;
+}
+.tp80{
+    top:80%;
+}
 .wp100{
     width: 100%;
 }
@@ -208,6 +327,9 @@ span.button_on{
 }
 .wp25{
     width: 25%;
+}
+.hp20{
+    height: 20%;
 }
 .plr3 {
     padding-left: 3%;
@@ -258,4 +380,7 @@ span.button_on{
  }
 .mb10px{
     margin-bottom: 10px;
+}
+.p10x40x15px{
+    padding: 10px 40px 15px;
 }
