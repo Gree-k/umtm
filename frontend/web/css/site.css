@@ -16,7 +16,8 @@ html, body {
 }
 
 .wrap > .container {
-    padding: 70px 3% 50px;
+    min-height: 100%;
+    padding: 70px 3% 60px;
 }
 .header {
     width: 100%;
@@ -64,7 +65,11 @@ html, body {
     text-align: center;
     vertical-align: middle;
 }
-
+/*@media screen and (max-width: 1000px) {*/
+    /*.header{*/
+        /*background-color: #00aa00;*/
+    /*}*/
+/*}*/
 #promote_material{
     display: none;
     position: relative;
@@ -167,7 +172,6 @@ html, body {
     top: 8%;
     border-radius: 4px;
     width: 27%;
-    border: 1px solid black;
 }
 .info-block:nth-child(1) {
     width: 26%;
@@ -183,6 +187,10 @@ html, body {
     left: 69%;
 }
 
+.info-block:hover{
+
+    border: 1px solid black;
+}
 .info-block > .content:nth-child(1) {
     top: 10%;
 }
@@ -290,6 +298,111 @@ html, body {
 
 
 
+
+
+.table{
+    width: 100%;
+    text-align: left;
+    background-color: white;
+}
+.table td, th{
+    padding: 10px;
+}
+.js-table > tbody tr{
+    cursor: pointer;
+}
+
+.pagination{
+    padding: 0;
+    display: inline-block;
+}
+.pagination li {
+    display: table-cell;
+    border: 1px solid black;
+}
+.pagination li:nth-child(n+2) {
+    border-left: 0;
+}
+.pagination  a, span{
+    color: #0000aa;
+    background-color: lightgrey;
+    padding: 5px 15px;
+    display: inline-block;
+    text-decoration: none;
+}
+.pagination > .disabled{
+    cursor: not-allowed;
+}
+.pagination > .active a{
+    color: white;
+    background-color: #00b3ee;
+}
+.buyer{
+    cursor: pointer;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+#filter-buyer{
+    display: none;
+    position: absolute;
+    top: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#filter-buyer:after{
+    content: '';
+    position: absolute;
+    right: 40%; top: -20px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid black;
+}
+
+
+.list {
+    overflow: hidden;
+    background-color: lightgrey;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    list-style-type: none;
+    font-size: 18px;
+}
+.list  a {
+
+    padding: 5px 10px;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    color: blue;
+    text-decoration: none;
+}
+
+.list a:hover{
+    color: black;
+    background-color: #00b3ee;
+}
+.list .active{
+    background-color: yellow;
+}
+
+
+.qwe{
+    background-color:#778899;border-bottom: 1px solid black;
+}
+.round {
+    width: 40px;
+    height: 40px;
+    background: #e3e3e3;
+    border: 2px solid blue;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: blue;
+    border-radius: 40px;
+}
 
 
 

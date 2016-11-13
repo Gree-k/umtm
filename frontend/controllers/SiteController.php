@@ -1,8 +1,12 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\Article;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\data\ActiveDataProvider;
+use yii\data\Sort;
+use yii\db\ActiveQuery;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -118,7 +122,8 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success',
+                    'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
@@ -136,9 +141,43 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionAbout($id = null)
     {
-        return $this->render('about');
+        $query = Article::find()
+            ->joinWith([
+                'user' => function (ActiveQuery $query) use ($id) {
+                    if ($id == 1 || $id == 2) {
+                        $query->alias('u')->where(['u.id' => $id]);
+                    }
+                }
+            ]);
+//                ->where(['id' => $id]);
+
+        $provider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 3,
+                'pageSizeParam' => false
+            ],
+            'sort' => new Sort([
+                'attributes' => [
+                    'title',
+                    'text',
+                    'id',
+                    'create_date'
+
+                ],
+            ])
+        ]);
+        if (Yii::$app->request->isAjax) {
+            return 1;$provider->getModels();
+            die;
+        }
+        var_dump($provider->getTotalCount());
+
+
+//        $provider = $provider->getModels();
+        return $this->render('about', compact('provider', 'search'));
     }
 
     /**

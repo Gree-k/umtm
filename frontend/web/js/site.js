@@ -13,5 +13,40 @@ $(function () {
             elem.slideToggle('slow');
         }
     }
+
+    $(document).on('click', function (e) {
+        var buyer = $('#filter-buyer');
+        if (buyer.is(':visible') && !$(e.target).closest(".js-filter-buyer").length) {
+            buyer.hide();
+        }
+    });
+
+
+    $('#next').on('click', function () {
+        var q = $(this).attr('href');
+        alert(q);
+
+        $.ajax({
+            url:  q,
+
+            success: function(){
+                alert('Load was performed.');
+            }
+        });
+
+        return false;
+    });
+    $('.asd').on('click', function () {
+        $('.table > tbody').append('<tr class="qwe"> </tr>').append('<td>qweqwewqe</td>')
+    });
+
+    $('.js-filter-buyer').on('click', function () {
+        $('#filter-buyer').toggle();
+    });
+
+    $('.js-table > tbody tr').on('click', function() {
+            alert($(this).data('id'));
+    }
+    )
 });
 
