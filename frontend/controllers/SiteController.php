@@ -6,6 +6,7 @@ use Yii;
 use yii\base\InvalidParamException;
 use yii\data\ActiveDataProvider;
 use yii\data\Sort;
+use yii\data\SqlDataProvider;
 use yii\db\ActiveQuery;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -169,15 +170,38 @@ class SiteController extends Controller
                 ],
             ])
         ]);
-        if (Yii::$app->request->isAjax) {
-            return 1;$provider->getModels();
-            die;
-        }
-        var_dump($provider->getTotalCount());
 
+        $co = Yii::$app->db->createCommand('
+            SELECT
+                COUNT(*)
+            FROM articles
+            LEFT JOIN users
+                ON articles.id_user = users.id
+            '. (($id == 1 || $id == 2)? 'WHERE users.id= :id' : ''), [':id'=> $id])
+            ->queryScalar();
+        $pr = new SqlDataProvider([
+            'sql' => $qwe='SELECT
+                  articles.*, users.name
+            FROM articles
+            LEFT JOIN users
+                ON articles.id_user = users.id
+            '. (($id == 1 || $id == 2)? 'WHERE users.id= :id' : ''),
+            'params' => [':id'=> $id],
+            'totalCount' => $co,
+            'sort' => [
+                'attributes' => [
+                    'title',
+                    'text'
+                ],
+            ],
+            'pagination' => [
+                'pageSize' => 3,
+            ],
+        ]);
 
+        var_dump(json_encode($pr->getModels()));
 //        $provider = $provider->getModels();
-        return $this->render('about', compact('provider', 'search'));
+        return $this->render('about', compact('provider', 'search', 'pr'));
     }
 
     /**

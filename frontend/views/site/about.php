@@ -27,22 +27,69 @@ $id = $_GET['id'];
 //    Html::a('Новички', Url::current(['id'=>1])),
 //    Html::a('Постоянные', Url::current(['id'=>2]))
 //], ['class' => 'list']);
-echo \yii\grid\GridView::widget([
-    'dataProvider' => $provider,
+//echo \yii\grid\GridView::widget([
+//    'dataProvider' => $provider,
+//
+//    'layout' => "{summary}\n{items}\n<div style='text-align: center'>{pager}</div>",
+//    'summary' => "Показано {begin, number}-{end, number} из {totalCount, number}",
+////    'pager' => [
+////        'firstPageLabel' => 'first',
+////        'lastPageLabel' => 'last',
+////        'prevPageLabel' => 'previous',
+////        'nextPageLabel' => 'next',
+////    ],
+//    'tableOptions' => ['class' => 'table js-table', 'id' => ''],
+////    'rowOptions' => ['style' => '],
+//    'rowOptions' => function ($model, $key, $index, $grid) {
+//        return [
+//            'data-id' => $model->id,
+//            'class' => 'qwe'
+//        ];
+//    },
+//    'columns' => [
+//        'title',
+//        'text',
+//        [
+//            'label' => 'create date',
+//            'attribute' => 'create_date',
+//            'value' => function ($model, $_key, $_index, $_column) {
+//                return Yii::$app->formatter->asDatetime($model->create_date, 'php: d-m-Y');
+//            }
+//        ],
+//        'id',
+//        [
+//            'headerOptions' => ['class' => 'js-filter-buyer buyer', 'id' => ''],
+//            'header' => 'Use' . ($id == 2 ? ': Постоянные' : ($id == 1 ? ': Новички' : '')) .
+//                Html::ul([
+//                    'Все' => null,
+//                    'Новички' => 1,
+//                    'Постоянные' => 2,
+//                ], [
+//                    'item' => function ($item, $index) use ($id) {
+//                        return Html::tag(
+//                            'li',
+//                            Html::a($index, Url::current(['id' => $item])),
+//                            ['class' => $item == $id ? 'active' : '']
+//                        );
+//                    },
+//                    'class' => 'list',
+//                    'id' => 'filter-buyer'
+//                ])
+//            ,
+//            'attribute' => 'user.id'
+//            ,
+//            'format' => ['html'],
+//            'value' => 'user.name',
+//        ],
+//    ]
+//]);
 
-    'layout' => "{summary}\n{items}\n<div style='text-align: center'>{pager}</div>",
-    'summary' => "Показано {begin, number}-{end, number} из {totalCount, number}",
-//    'pager' => [
-//        'firstPageLabel' => 'first',
-//        'lastPageLabel' => 'last',
-//        'prevPageLabel' => 'previous',
-//        'nextPageLabel' => 'next',
-//    ],
-    'tableOptions' => ['class' => 'table js-table', 'id' => ''],
-//    'rowOptions' => ['style' => '],
+
+echo \yii\grid\GridView::widget([
+    'dataProvider' => $pr,
     'rowOptions' => function ($model, $key, $index, $grid) {
         return [
-            'data-id' => $model->id,
+            'data-id' => $model['id'],
             'class' => 'qwe'
         ];
     },
@@ -52,9 +99,9 @@ echo \yii\grid\GridView::widget([
         [
             'label' => 'create date',
             'attribute' => 'create_date',
-            'value' => function ($model, $_key, $_index, $_column) {
-                    return   Yii::$app->formatter->asDatetime($model->create_date, 'php: d-m-Y')  ;
-                }
+            'value' => function ($model) {
+                return Yii::$app->formatter->asDatetime($model['create_date'], 'php: d-m-Y');
+            }
         ],
         'id',
         [
@@ -76,21 +123,22 @@ echo \yii\grid\GridView::widget([
                     'id' => 'filter-buyer'
                 ])
             ,
-            'attribute' => 'user.id'
+            'attribute' => 'id_user'
             ,
             'format' => ['html'],
-            'value' => 'user.name',
+            'value' => 'name',
         ],
     ]
 ]);
 
+
 var_dump($provider->getPagination()->links['next']);
 $next = $provider->getPagination()->links['next'];
 ?>
-<?php if(!empty($next)):?>
-<div style="text-align: center">
-    <a id="next" href="<?= $provider->getPagination()->links['next'] ?>" >yot10</a>
-</div>
+<?php if (!empty($next)): ?>
+    <div style="text-align: center">
+        <a id="next" href="<?= $provider->getPagination()->links['next'] ?>">yot10</a>
+    </div>
 <?php endif; ?>
 
 <!--<div class="site-about">-->
